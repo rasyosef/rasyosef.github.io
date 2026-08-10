@@ -44,6 +44,7 @@
               <li>Features include just-in-time compilation with Numba, memory mapping for low RAM usage, and PyTorch with CUDA for 10x faster search on NVIDIA GPUs. <a href="https://github.com/rasyosef/splade-index" target="_blank" rel="noreferrer">View on GitHub</a>.</li>
               <li>Save and load indices locally, or upload them to the <a href="https://huggingface.co/" target="_blank" rel="noreferrer">Hugging Face Hub</a> so others can download and use them. Memory mapping loads a 1-million-document index with just 2GB of RAM without a noticeable change in search latency.</li>
               <li>Use NVIDIA GPUs and PyTorch for up to 10x faster search than the CPU-based Numba backend when working with indices containing more than 1 million documents.</li>
+              <li>A <a href="https://github.com/huggingface/sentence-transformers/tree/main/examples/sparse_encoder/applications/semantic_search" target="_blank" rel="noreferrer">Splade-Index usage example</a> has been added to the official Sentence-Transformers GitHub repository.</li>
             </ul>
           </article>
           <article class="project">
@@ -51,17 +52,20 @@
             <ul>
               <li>Trained SPLADE sparse retrieval models based on BERT-Tiny (4M parameters), BERT-Mini (11M), and BERT-Small (28.8M) by distilling the <a href="https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2" target="_blank" rel="noreferrer">ms-marco-MiniLM-L6-v2</a> cross-encoder on MSMARCO.</li>
               <li>The tiny SPLADE models beat BM25 by 65.6-89.4% on MSMARCO. Despite being 6-15x smaller than <a href="https://huggingface.co/naver/splade-v3" target="_blank" rel="noreferrer">naver/splade-v3</a>, they retain 80-88% of its performance while producing embedding vectors with up to 45% fewer active dimensions.</li>
-              <li>SPLADE-Mini also outperforms the 6x larger <a href="https://huggingface.co/naver/splade_v2_max" target="_blank" rel="noreferrer">naver/splade_v2_max</a> on MSMARCO, and the models are small enough to run without a GPU on datasets of a few thousand documents.</li>
-              <li><a href="https://huggingface.co/rasyosef/splade-tiny" target="_blank" rel="noreferrer">rasyosef/splade-tiny</a> has been downloaded over 140,000 times on Hugging Face and cited in a paper by Principal Engineers at Amazon Web Services.</li>
+              <li><a href="https://huggingface.co/rasyosef/splade-mini" target="_blank" rel="noreferrer">rasyosef/splade-mini</a> also outperforms the 6x larger <a href="https://huggingface.co/naver/splade_v2_max" target="_blank" rel="noreferrer">naver/splade_v2_max</a> on MSMARCO, and the models are small enough to run without a GPU on datasets of a few thousand documents.</li>
+              <li><a href="https://huggingface.co/rasyosef/splade-tiny" target="_blank" rel="noreferrer">rasyosef/splade-tiny</a> has been downloaded over 140,000 times on Hugging Face and cited in a <a href="https://github.com/edenduthie/infon/blob/main/paper/infon.pdf" target="_blank" rel="noreferrer">paper</a> by Principal Engineers at Amazon Web Services.</li>
               <li>Download the <a href="https://huggingface.co/collections/rasyosef/splade-tiny-msmarco-687c548c0691d95babf65b70" target="_blank" rel="noreferrer">models</a> or <a href="https://github.com/rasyosef/splade-tiny-msmarco" target="_blank" rel="noreferrer">view the code on GitHub</a>. The <a href="https://huggingface.co/datasets/yosefw/msmarco-train-distil-v2" target="_blank" rel="noreferrer">distillation dataset</a> is also available on Hugging Face.</li>
+              <li><a href="https://huggingface.co/rasyosef/splade-tiny" target="_blank" rel="noreferrer">rasyosef/splade-tiny</a> and <a href="https://huggingface.co/rasyosef/splade-mini" target="_blank" rel="noreferrer">rasyosef/splade-mini</a> have been added to the list of recommended SPLADE models in the <a href="https://sbert.net/docs/sparse_encoder/pretrained_models.html" target="_blank" rel="noreferrer">Sentence-Transformers library documentation</a>.</li>
             </ul>
           </article>
           <article class="project">
             <div class="project-heading"><h3>Phi 2 Instruct <span class="technologies">| Python, PyTorch, Hugging Face, Transformers, TRL</span></h3><span class="date">July 2024 - August 2024</span></div>
             <ul>
-              <li>Fine-tuned Microsoft's Phi-2 LLM using Supervised Fine-Tuning (128K OpenHermes-2.5 samples) and Direct Preference Optimization (20K UltraFeedback pairs) on a single A100 40GB GPU.</li>
-              <li>Evaluated on IFEval, GSM8k, MMLU, TruthfulQA, and Winogrande via lm-evaluation-harness; achieved a +13 improvement on IFEval and outperformed the base model on every benchmark except MMLU.</li>
-              <li>Ranked 3rd on the Open LLM Leaderboard among sub-3B chat models and surpassed Gemma-1.1-2B-IT by 6.14 points on IFEval. <a href="https://huggingface.co/collections/rasyosef/phi-2-chat-models" target="_blank" rel="noreferrer">View the models</a>.</li>
+              <li>Fine-tuned Microsoft's Phi-2 base LLM to follow instructions through Supervised Fine-Tuning (SFT) and Direct Preference Optimization (DPO), using the TRL library and a single A100 40GB GPU for both stages.</li>
+              <li>Supervised Fine-Tuning: Used 128,000 instruction-response pairs from the OpenHermes-2.5 dataset.</li>
+              <li>Direct Preference Optimization: Used 20,000 preference pairs from the UltraFeedback Binarized dataset.</li>
+              <li>Evaluation: Evaluated Phi-2 Instruct on IFEval, GSM8K, MMLU, TruthfulQA, and Winogrande using EleutherAI's lm-evaluation-harness. It scored 13 points higher than the base model on IFEval and performed better on every other benchmark except MMLU.</li>
+              <li>Open LLM Leaderboard: Ranked 3rd among chat models with fewer than 3B parameters and beat Google's Gemma-1.1-2B-IT by 6.14 points on IFEval. <a href="https://huggingface.co/collections/rasyosef/phi-2-chat-models" target="_blank" rel="noreferrer">View the models</a>.</li>
             </ul>
           </article>
           <article class="project">
