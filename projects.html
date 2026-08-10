@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Projects by Yosef Worku Alemneh." />
+    <title>Projects - Yosef Worku Alemneh</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+      @media(min-width:761px){.site-wrap{max-width:1200px;padding-left:30px;padding-right:30px}.layout{grid-template-columns:205px minmax(0,760px);gap:50px}}
+      .profile-links li:nth-child(2) .link-icon,.profile-links li:nth-child(6) .link-icon{color:#000}
+      .sidebar{font-size:14px}.portrait{overflow:hidden}.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+      .project{margin:0 0 34px}.project-heading{display:flex;justify-content:space-between;align-items:baseline;gap:18px;margin-bottom:4px}.project h3{font:700 17px Arial,sans-serif;line-height:1.5;margin:0;color:#222}.project .date{color:#777;font-size:14px;white-space:nowrap}.project .technologies{color:#777;font-style:italic;font-weight:400}.project ul{margin:0;padding-left:25px}.project li{margin-bottom:7px;padding-left:2px}.project li:last-child{margin-bottom:0}
+      @media(max-width:760px){.project-heading{display:block}.project .date{display:block;margin-top:2px}.project h3{font-size:16px}}
+    </style>
+  </head>
+  <body>
+    <div class="site-wrap">
+      <header class="masthead">
+        <a class="site-title" href="index.html">About</a>
+        <nav><a href="publications.html">Publications</a><a href="projects.html">Projects</a></nav>
+      </header>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="portrait"><img src="images/me.jpg" alt="Yosef Worku Alemneh" /></div>
+          <h1>Yosef Worku Alemneh</h1>
+          <ul class="profile-links">
+            <li class="location"><i class="link-icon fa-solid fa-location-dot" aria-hidden="true"></i>Addis Ababa, Ethiopia</li>
+            <li><a href="mailto:yosefwalemneh@gmail.com"><i class="link-icon fa-solid fa-envelope" aria-hidden="true"></i>Email</a></li>
+            <li><a href="https://linkedin.com/in/yosef-worku-alemneh" target="_blank" rel="noreferrer"><i class="link-icon fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+            <li><a href="https://github.com/rasyosef" target="_blank" rel="noreferrer"><i class="link-icon fa-brands fa-github" aria-hidden="true"></i>GitHub</a></li>
+            <li><a href="https://huggingface.co/rasyosef" target="_blank" rel="noreferrer"><span class="link-icon hugging-face-icon" aria-hidden="true">🤗</span>Hugging Face</a></li>
+            <li><a href="https://scholar.google.com/citations?user=FH2H0KAAAAAJ&amp;hl=en" target="_blank" rel="noreferrer"><i class="link-icon fa-solid fa-graduation-cap" aria-hidden="true"></i>Google Scholar</a></li>
+          </ul>
+        </aside>
+        <main class="main">
+          <h2>Projects</h2>
+          <article class="project">
+            <div class="project-heading"><h3>Splade-Index Python Package <span class="technologies">| Python, Sentence-Transformers, NumPy</span></h3><span class="date">July 2025 - Present</span></div>
+            <ul>
+              <li><a href="https://github.com/rasyosef/splade-index" target="_blank" rel="noreferrer">Splade-Index</a> is a Python package that implements a fast inverted index for SPLADE sparse retrieval models. It can index, query, and rank millions of documents.</li>
+              <li>It works with any SparseEncoder model supported by sentence-transformers, including <a href="https://huggingface.co/naver/splade-v3" target="_blank" rel="noreferrer">naver/splade-v3</a> and <a href="https://huggingface.co/rasyosef/splade-tiny" target="_blank" rel="noreferrer">rasyosef/splade-tiny</a>, a 4.4M-parameter sparse encoder trained by me that achieves 30.8 MRR@10 on MSMARCO Dev, outperforming BM25 by 65%.</li>
+              <li>Features include just-in-time compilation with Numba, memory mapping for low RAM usage, and PyTorch with CUDA for 10x faster search on NVIDIA GPUs. <a href="https://github.com/rasyosef/splade-index" target="_blank" rel="noreferrer">View on GitHub</a>.</li>
+              <li>Save and load indices locally, or upload them to the <a href="https://huggingface.co/" target="_blank" rel="noreferrer">Hugging Face Hub</a> so others can download and use them. Memory mapping loads a 1-million-document index with just 2GB of RAM without a noticeable change in search latency.</li>
+              <li>Use NVIDIA GPUs and PyTorch for up to 10x faster search than the CPU-based Numba backend when working with indices containing more than 1 million documents.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-heading"><h3>SPLADE-Tiny MSMARCO <span class="technologies">| Python, PyTorch, Transformers, Sentence-Transformers</span></h3><span class="date">July 2025 - Present</span></div>
+            <ul>
+              <li>Trained SPLADE sparse retrieval models based on BERT-Tiny (4M parameters), BERT-Mini (11M), and BERT-Small (28.8M) by distilling the <a href="https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2" target="_blank" rel="noreferrer">ms-marco-MiniLM-L6-v2</a> cross-encoder on MSMARCO.</li>
+              <li>The tiny SPLADE models beat BM25 by 65.6-89.4% on MSMARCO. Despite being 6-15x smaller than <a href="https://huggingface.co/naver/splade-v3" target="_blank" rel="noreferrer">naver/splade-v3</a>, they retain 80-88% of its performance while producing embedding vectors with up to 45% fewer active dimensions.</li>
+              <li>SPLADE-Mini also outperforms the 6x larger <a href="https://huggingface.co/naver/splade_v2_max" target="_blank" rel="noreferrer">naver/splade_v2_max</a> on MSMARCO, and the models are small enough to run without a GPU on datasets of a few thousand documents.</li>
+              <li><a href="https://huggingface.co/rasyosef/splade-tiny" target="_blank" rel="noreferrer">rasyosef/splade-tiny</a> has been downloaded over 140,000 times on Hugging Face and cited in a paper by Principal Engineers at Amazon Web Services.</li>
+              <li>Download the <a href="https://huggingface.co/collections/rasyosef/splade-tiny-msmarco-687c548c0691d95babf65b70" target="_blank" rel="noreferrer">models</a> or <a href="https://github.com/rasyosef/splade-tiny-msmarco" target="_blank" rel="noreferrer">view the code on GitHub</a>. The <a href="https://huggingface.co/datasets/yosefw/msmarco-train-distil-v2" target="_blank" rel="noreferrer">distillation dataset</a> is also available on Hugging Face.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-heading"><h3>Phi 2 Instruct <span class="technologies">| Python, PyTorch, Hugging Face, Transformers, TRL</span></h3><span class="date">July 2024 - August 2024</span></div>
+            <ul>
+              <li>Fine-tuned Microsoft's Phi-2 LLM using Supervised Fine-Tuning (128K OpenHermes-2.5 samples) and Direct Preference Optimization (20K UltraFeedback pairs) on a single A100 40GB GPU.</li>
+              <li>Evaluated on IFEval, GSM8k, MMLU, TruthfulQA, and Winogrande via lm-evaluation-harness; achieved a +13 improvement on IFEval and outperformed the base model on every benchmark except MMLU.</li>
+              <li>Ranked 3rd on the Open LLM Leaderboard among sub-3B chat models and surpassed Gemma-1.1-2B-IT by 6.14 points on IFEval. <a href="https://huggingface.co/collections/rasyosef/phi-2-chat-models" target="_blank" rel="noreferrer">View the models</a>.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-heading"><h3>Amharic BERT and RoBERTa Encoder Models <span class="technologies">| Python, PyTorch, Transformers</span></h3><span class="date">May 2024 - January 2025</span></div>
+            <ul>
+              <li>Pretrained BERT and RoBERTa encoder models (4M-110M parameters) on a 290M-token Amharic corpus with a 512-token context window.</li>
+              <li>Built tokenizers from scratch on the same corpus, with vocabulary sizes of 28,672 for BERT and 32,000 for RoBERTa.</li>
+              <li>Fine-tuned the models for Amharic sentiment classification and named entity recognition. roberta-base-amharic (110M) achieved F1 scores of 0.88 and 0.78, while roberta-medium-amharic (42M) reached 0.84 and 0.75.</li>
+              <li>roberta-base-amharic exceeded afro-xlmr-large (560M) by 0.02 F1 on both tasks, and roberta-medium-amharic (42M) surpassed xlm-roberta-base (279M).</li>
+              <li>The models have been cited by four peer-reviewed publications, including two ACL papers and two SIGIR papers. <a href="https://huggingface.co/collections/rasyosef/amharic-bert-and-roberta" target="_blank" rel="noreferrer">View the models</a>.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-heading"><h3>Llama 3.2 Amharic (400M &amp; 180M) <span class="technologies">| Python, PyTorch, Transformers</span></h3><span class="date">October 2024 - December 2024</span></div>
+            <ul>
+              <li>Pretrained 400M- and 180M-parameter versions of Meta's Llama 3.2 1B from scratch on approximately 300 million (274M) Amharic tokens. The 400M Base model trained for 23 hours on one A100 40GB GPU and reached 41.3 validation perplexity; the 180M Base model trained for 26 hours and reached 42.5. <a href="https://huggingface.co/collections/rasyosef/llama-32-amharic" target="_blank" rel="noreferrer">View the model collection</a>.</li>
+              <li>All models use a 32k vocabulary Llama 3.2 tokenizer, trained from scratch on the same pretraining dataset, and have a 1024-token context.</li>
+              <li>The 400M model was instruction-tuned on approximately 20k Amharic poems, stories, jokes, and Wikipedia articles.</li>
+              <li>The models generate fluent Amharic text, while the Instruct versions support conversations, question answering, sentiment and text classification, and creative writing.</li>
+              <li>Models: <a href="https://huggingface.co/rasyosef/Llama-3.2-400M-Amharic" target="_blank" rel="noreferrer">Llama 3.2 Amharic 400M Base</a>, <a href="https://huggingface.co/rasyosef/Llama-3.2-400M-Amharic-Instruct-Poems-Stories-Wikipedia" target="_blank" rel="noreferrer">Llama 3.2 Amharic 400M Instruct</a>, <a href="https://huggingface.co/rasyosef/Llama-3.2-180M-Amharic" target="_blank" rel="noreferrer">Llama 3.2 Amharic 180M Base</a>, and <a href="https://huggingface.co/rasyosef/Llama-3.2-180M-Amharic-Instruct" target="_blank" rel="noreferrer">Llama 3.2 Amharic 180M Instruct</a>. Try the <a href="https://huggingface.co/spaces/rasyosef/Llama-3.2-400M-Amharic-Instruct" target="_blank" rel="noreferrer">chat demo</a>.</li>
+            </ul>
+          </article>
+          <footer>© 2026 Yosef Worku Alemneh. Powered by <a href="https://pages.github.com/">GitHub Pages</a>.</footer>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
